@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Mobile_app.Pages.AddStudyTaskPage"
+             Title="Add Study Task">
+
+	<ScrollView>
+		<VerticalStackLayout Padding="20" Spacing="12">
+
+			<Label Text="Add Study Task"
+                   FontSize="24"
+                   FontAttributes="Bold"
+                   HorizontalOptions="Center" />
+
+			<Entry x:Name="SubjectEntry" Placeholder="Subject" />
+			<DatePicker x:Name="TaskDatePicker" />
+			<Entry x:Name="TimeEntry" Placeholder="Time (e.g. 16:00)" />
+			<Entry x:Name="CategoryEntry" Placeholder="Category" />
+			<Entry x:Name="DurationEntry" Placeholder="Duration (e.g. 45 minutes)" />
+			<Editor x:Name="NotesEditor" Placeholder="Notes" AutoSize="TextChanges" HeightRequest="100"/>
+
+			<Button Text="Save Task"
+                    Clicked="OnSaveTaskClicked"
+                    BackgroundColor="#43A047"
+                    TextColor="White"/>
+
+		</VerticalStackLayout>
+	</ScrollView>
+</ContentPage>

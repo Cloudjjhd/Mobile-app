@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Mobile_app.Pages.TaskDetailsPage"
+             Title="Task Details"
+             BackgroundColor="#F7F9FC">
+
+	<ScrollView>
+		<VerticalStackLayout Padding="20" Spacing="16">
+
+			<!-- Title -->
+			<Label Text="Task Details"
+                   FontSize="28"
+                   FontAttributes="Bold"
+                   TextColor="#1E88E5"
+                   HorizontalOptions="Center" />
+
+			<!-- Task Info Card -->
+			<Frame BackgroundColor="White"
+                   CornerRadius="16"
+                   Padding="15"
+                   BorderColor="#E0E0E0">
+
+				<VerticalStackLayout Spacing="10">
+
+					<Label x:Name="SubjectLabel"
+                           FontSize="20"
+                           FontAttributes="Bold"
+                           TextColor="Black" />
+
+					<Label x:Name="DateLabel"
+                           FontSize="15"
+                           TextColor="#616161" />
+
+					<Label x:Name="TimeLabel"
+                           FontSize="15"
+                           TextColor="#616161" />
+
+					<Label x:Name="CategoryLabel"
+                           FontSize="15"
+                           TextColor="#1565C0" />
+
+					<Label x:Name="DurationLabel"
+                           FontSize="15"
+                           TextColor="#616161" />
+
+					<Label Text="Notes:"
+                           FontSize="16"
+                           FontAttributes="Bold"
+                           TextColor="Black" />
+
+					<Label x:Name="NotesLabel"
+                           FontSize="15"
+                           TextColor="#424242"
+                           LineBreakMode="WordWrap" />
+
+					<Label x:Name="StatusLabel"
+                           FontSize="16"
+                           FontAttributes="Bold"
+                           TextColor="#43A047" />
+
+				</VerticalStackLayout>
+			</Frame>
+
+			<!-- Action Buttons -->
+			<Button Text="Mark as Done"
+                    Clicked="OnMarkAsDoneClicked"
+                    BackgroundColor="#43A047"
+                    TextColor="White"
+                    CornerRadius="20"
+                    HeightRequest="50"
+                    FontAttributes="Bold"/>
+
+			<Button Text="Edit Task"
+                    Clicked="OnEditTaskClicked"
+                    BackgroundColor="#1E88E5"
+                    TextColor="White"
+                    CornerRadius="20"
+                    HeightRequest="50"
+                    FontAttributes="Bold"/>
+
+			<Button Text="Delete Task"
+                    Clicked="OnDeleteTaskClicked"
+                    BackgroundColor="#E53935"
+                    TextColor="White"
+                    CornerRadius="20"
+                    HeightRequest="50"
+                    FontAttributes="Bold"/>
+
+		</VerticalStackLayout>
+	</ScrollView>
+</ContentPage>

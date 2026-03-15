@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Mobile_app.Pages.DailySchedulePage"
+             Title="FocusDay"
+             BackgroundColor="#F7F9FC">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="16">
+
+            <!-- App Title -->
+            <Label Text="FocusDay"
+                   FontSize="30"
+                   FontAttributes="Bold"
+                   TextColor="#1E88E5"
+                   HorizontalOptions="Center" />
+
+            <Label Text="Plan your study tasks clearly and efficiently"
+                   FontSize="14"
+                   TextColor="Gray"
+                   HorizontalOptions="Center" />
+
+            <!-- Date Controls -->
+            <Frame BackgroundColor="White"
+                   CornerRadius="16"
+                   Padding="15"
+                   BorderColor="#E0E0E0">
+
+                <VerticalStackLayout Spacing="12">
+
+                    <Label Text="Selected Date"
+                           FontSize="14"
+                           TextColor="Gray" />
+
+                    <Label x:Name="DateLabel"
+                           FontSize="18"
+                           FontAttributes="Bold"
+                           TextColor="Black"
+                           HorizontalOptions="Center" />
+
+                    <DatePicker x:Name="ScheduleDatePicker"
+                                DateSelected="OnDateSelected"
+                                HorizontalOptions="Fill"
+                                VerticalOptions="Center" />
+
+                    <HorizontalStackLayout Spacing="10" HorizontalOptions="Center">
+                        <Button Text="Today"
+                                Clicked="OnTodayClicked"
+                                BackgroundColor="#43A047"
+                                TextColor="White"
+                                CornerRadius="18"
+                                Padding="18,8"/>
+
+                        <Button Text="Tomorrow"
+                                Clicked="OnTomorrowClicked"
+                                BackgroundColor="#FB8C00"
+                                TextColor="White"
+                                CornerRadius="18"
+                                Padding="18,8"/>
+                    </HorizontalStackLayout>
+
+                </VerticalStackLayout>
+            </Frame>
+
+            <!-- Progress -->
+            <Frame BackgroundColor="White"
+                   CornerRadius="16"
+                   Padding="15"
+                   BorderColor="#E0E0E0">
+                <VerticalStackLayout Spacing="6">
+                    <Label Text="Daily Progress"
+                           FontSize="14"
+                           TextColor="Gray" />
+                    <Label x:Name="ProgressLabel"
+                           FontSize="18"
+                           FontAttributes="Bold"
+                           TextColor="Black"
+                           HorizontalOptions="Center" />
+                </VerticalStackLayout>
+            </Frame>
+
+            <!-- Task List -->
+            <Label Text="Study Tasks"
+                   FontSize="20"
+                   FontAttributes="Bold"
+                   TextColor="Black" />
+
+            <CollectionView x:Name="TasksCollectionView"
+                            SelectionMode="Single"
+                            SelectionChanged="OnTaskSelected">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame BorderColor="#E0E0E0"
+                               CornerRadius="14"
+                               Padding="12"
+                               Margin="0,6"
+                               BackgroundColor="White">
+                            <VerticalStackLayout Spacing="4">
+
+                                <HorizontalStackLayout Spacing="8">
+                                    <Label Text="✓"
+                                           TextColor="Green"
+                                           FontSize="18"
+                                           IsVisible="{Binding IsCompleted}" />
+
+                                    <Label Text="{Binding Subject}"
+                                           FontSize="18"
+                                           FontAttributes="Bold">
+                                        <Label.Triggers>
+                                            <DataTrigger TargetType="Label"
+                                                         Binding="{Binding IsCompleted}"
+                                                         Value="True">
+                                                <Setter Property="TextColor" Value="Gray" />
+                                                <Setter Property="TextDecorations" Value="Strikethrough" />
+                                            </DataTrigger>
+                                        </Label.Triggers>
+                                    </Label>
+                                </HorizontalStackLayout>
+
+                                <Label Text="{Binding TimeText}"
+                                       FontSize="14"
+                                       TextColor="Gray" />
+
+                                <Label Text="{Binding Category}"
+                                       FontSize="14"
+                                       TextColor="#1565C0">
+                                    <Label.Triggers>
+                                        <DataTrigger TargetType="Label"
+                                                     Binding="{Binding IsCompleted}"
+                                                     Value="True">
+                                            <Setter Property="TextColor" Value="#9E9E9E" />
+                                        </DataTrigger>
+                                    </Label.Triggers>
+                                </Label>
+
+                            </VerticalStackLayout>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+            <!-- Add Task Button -->
+            <Button Text="+ Add Study Task"
+                    Clicked="OnAddTaskClicked"
+                    BackgroundColor="#1E88E5"
+                    TextColor="White"
+                    CornerRadius="22"
+                    HeightRequest="52"
+                    FontAttributes="Bold"/>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
