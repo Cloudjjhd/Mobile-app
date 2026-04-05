@@ -1,25 +1,30 @@
 ﻿using Microsoft.Extensions.Logging;
+using Mobile_app.Services;
 
-namespace Mobile_app
+namespace Mobile_app;
+
+public static class MauiProgram
 {
-    public static class MauiProgram
+    public static MauiApp CreateMauiApp()
     {
-        public static MauiApp CreateMauiApp()
-        {
-            var builder = MauiApp.CreateBuilder();
-            builder
-                .UseMauiApp<App>()
-                .ConfigureFonts(fonts =>
-                {
-                    fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
-                    fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
-                });
+        var builder = MauiApp.CreateBuilder();
 
-#if DEBUG
-    		builder.Logging.AddDebug();
+        builder
+            .UseMauiApp<App>()
+            .ConfigureFonts(fonts =>
+            {
+                fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
+                fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
+            });
+
+#if ANDROID
+        builder.Services.AddSingleton<INotificationService, global::Mobile_app.Platforms.Android.NotificationService>();
 #endif
 
-            return builder.Build();
-        }
+#if DEBUG
+        builder.Logging.AddDebug();
+#endif
+
+        return builder.Build();
     }
 }

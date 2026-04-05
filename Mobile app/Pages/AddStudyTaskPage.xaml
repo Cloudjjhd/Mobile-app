@@ -2,28 +2,66 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Mobile_app.Pages.AddStudyTaskPage"
-             Title="Add Study Task">
+             Title="Add Study Task"
+             BackgroundColor="#F7F9FC">
 
-	<ScrollView>
-		<VerticalStackLayout Padding="20" Spacing="12">
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="14">
 
-			<Label Text="Add Study Task"
-                   FontSize="24"
+            <Label Text="Add Study Task"
+                   FontSize="28"
                    FontAttributes="Bold"
+                   TextColor="#1E88E5"
                    HorizontalOptions="Center" />
 
-			<Entry x:Name="SubjectEntry" Placeholder="Subject" />
-			<DatePicker x:Name="TaskDatePicker" />
-			<Entry x:Name="TimeEntry" Placeholder="Time (e.g. 16:00)" />
-			<Entry x:Name="CategoryEntry" Placeholder="Category" />
-			<Entry x:Name="DurationEntry" Placeholder="Duration (e.g. 45 minutes)" />
-			<Editor x:Name="NotesEditor" Placeholder="Notes" AutoSize="TextChanges" HeightRequest="100"/>
+            <Entry x:Name="SubjectEntry"
+                   Placeholder="Subject"
+                   BackgroundColor="White" />
 
-			<Button Text="Save Task"
+            <DatePicker x:Name="TaskDatePicker" />
+
+            <Entry x:Name="TimeEntry"
+                   Placeholder="Time (e.g. 16:00)"
+                   BackgroundColor="White" />
+
+            <Entry x:Name="CategoryEntry"
+                   Placeholder="Category"
+                   BackgroundColor="White" />
+
+            <Entry x:Name="DurationEntry"
+                   Placeholder="Duration (e.g. 45 minutes)"
+                   BackgroundColor="White" />
+
+            <Editor x:Name="NotesEditor"
+                    Placeholder="Notes"
+                    AutoSize="TextChanges"
+                    HeightRequest="100"
+                    BackgroundColor="White" />
+
+            <HorizontalStackLayout Spacing="10">
+                <Label Text="Enable Reminder"
+                       VerticalOptions="Center" />
+                <Switch x:Name="ReminderSwitch" />
+            </HorizontalStackLayout>
+
+            <Label Text="Reminder Minutes Before" />
+            <Picker x:Name="ReminderPicker" SelectedIndex="2">
+                <Picker.Items>
+                    <x:String>1</x:String>
+                    <x:String>5</x:String>
+                    <x:String>10</x:String>
+                    <x:String>30</x:String>
+                </Picker.Items>
+            </Picker>
+
+            <Button Text="Save Task"
                     Clicked="OnSaveTaskClicked"
-                    BackgroundColor="#43A047"
-                    TextColor="White"/>
+                    BackgroundColor="#1E88E5"
+                    TextColor="White"
+                    CornerRadius="20"
+                    HeightRequest="50"
+                    FontAttributes="Bold" />
 
-		</VerticalStackLayout>
-	</ScrollView>
+        </VerticalStackLayout>
+    </ScrollView>
 </ContentPage>

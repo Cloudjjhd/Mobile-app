@@ -6,18 +6,19 @@ namespace Mobile_app.Pages;
 public partial class DailySchedulePage : ContentPage
 {
     private DateTime selectedDate = DateTime.Today;
+    private bool isNavigating = false;
 
     public DailySchedulePage()
     {
         InitializeComponent();
-
         ScheduleDatePicker.Date = selectedDate;
-        LoadTasks();
     }
 
-    protected override void OnAppearing()
+    protected override async void OnAppearing()
     {
         base.OnAppearing();
+
+        await TaskService.InitializeAsync();
         LoadTasks();
     }
 
@@ -41,15 +42,29 @@ public partial class DailySchedulePage : ContentPage
         await Navigation.PushAsync(new AddStudyTaskPage());
     }
 
-    private async void OnTaskSelected(object sender, SelectionChangedEventArgs e)
+    private async void OnTaskTapped(object sender, TappedEventArgs e)
     {
-        if (e.CurrentSelection.FirstOrDefault() is StudyTask selectedTask)
+        if (isNavigating)
+            return;
+
+        if (sender is not Frame frame)
+            return;
+
+        if (frame.BindingContext is not StudyTask selectedTask)
+            return;
+
+        isNavigating = true;
+
+        try
         {
             await Navigation.PushAsync(new TaskDetailsPage(selectedTask));
-            TasksCollectionView.SelectedItem = null;
+        }
+        finally
+        {
+            await Task.Delay(200);
+            isNavigating = false;
         }
     }
-
 
     private void OnDateSelected(object sender, DateChangedEventArgs e)
     {

@@ -24,19 +24,13 @@ public partial class TaskDetailsPage : ContentPage
         NotesLabel.Text = task.Notes;
         StatusLabel.Text = $"Status: {(task.IsCompleted ? "Completed" : "Not Completed")}";
 
-        if (task.IsCompleted)
-        {
-            StatusLabel.TextColor = Colors.Green;
-        }
-        else
-        {
-            StatusLabel.TextColor = Colors.OrangeRed;
-        }
+        StatusLabel.TextColor = task.IsCompleted ? Colors.Green : Colors.OrangeRed;
     }
 
     private async void OnMarkAsDoneClicked(object sender, EventArgs e)
     {
         task.IsCompleted = true;
+        await TaskService.SaveTasksAsync();
         LoadTask();
 
         await DisplayAlertAsync("Updated", "Task marked as completed.", "OK");
@@ -55,6 +49,7 @@ public partial class TaskDetailsPage : ContentPage
         if (confirm)
         {
             TaskService.Tasks.Remove(task);
+            await TaskService.SaveTasksAsync();
             await Navigation.PopAsync();
         }
     }
