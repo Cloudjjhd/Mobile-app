@@ -6,37 +6,38 @@
              BackgroundColor="#F7F9FC">
 
     <Grid RowDefinitions="Auto,*,Auto"
-          Padding="20"
-          RowSpacing="16">
+          Padding="16"
+          RowSpacing="12">
 
         <!-- Top Section -->
         <ScrollView Grid.Row="0">
-            <VerticalStackLayout Spacing="16">
+            <VerticalStackLayout Spacing="10">
 
                 <Label Text="FocusDay"
-                       FontSize="30"
+                       FontSize="26"
                        FontAttributes="Bold"
                        TextColor="#1E88E5"
                        HorizontalOptions="Center" />
 
                 <Label Text="Plan your study tasks clearly and efficiently"
-                       FontSize="14"
+                       FontSize="12"
                        TextColor="Gray"
                        HorizontalOptions="Center" />
 
+                <!-- Selected Date Card -->
                 <Frame BackgroundColor="White"
-                       CornerRadius="16"
-                       Padding="15"
+                       CornerRadius="14"
+                       Padding="10"
                        BorderColor="#E0E0E0">
 
-                    <VerticalStackLayout Spacing="12">
+                    <VerticalStackLayout Spacing="8">
 
                         <Label Text="Selected Date"
-                               FontSize="14"
+                               FontSize="13"
                                TextColor="Gray" />
 
                         <Label x:Name="DateLabel"
-                               FontSize="18"
+                               FontSize="15"
                                FontAttributes="Bold"
                                TextColor="Black"
                                HorizontalOptions="Center" />
@@ -46,36 +47,39 @@
                                     HorizontalOptions="Fill"
                                     VerticalOptions="Center" />
 
-                        <HorizontalStackLayout Spacing="10"
+                        <HorizontalStackLayout Spacing="8"
                                                HorizontalOptions="Center">
                             <Button Text="Today"
                                     Clicked="OnTodayClicked"
                                     BackgroundColor="#43A047"
                                     TextColor="White"
-                                    CornerRadius="18"
-                                    Padding="18,8" />
+                                    CornerRadius="16"
+                                    Padding="14,6"
+                                    FontSize="13" />
 
                             <Button Text="Tomorrow"
                                     Clicked="OnTomorrowClicked"
                                     BackgroundColor="#FB8C00"
                                     TextColor="White"
-                                    CornerRadius="18"
-                                    Padding="18,8" />
+                                    CornerRadius="16"
+                                    Padding="14,6"
+                                    FontSize="13" />
                         </HorizontalStackLayout>
 
                     </VerticalStackLayout>
                 </Frame>
 
+                <!-- Daily Progress Card -->
                 <Frame BackgroundColor="White"
-                       CornerRadius="16"
-                       Padding="15"
+                       CornerRadius="14"
+                       Padding="10"
                        BorderColor="#E0E0E0">
-                    <VerticalStackLayout Spacing="6">
+                    <VerticalStackLayout Spacing="3">
                         <Label Text="Daily Progress"
-                               FontSize="14"
+                               FontSize="13"
                                TextColor="Gray" />
                         <Label x:Name="ProgressLabel"
-                               FontSize="18"
+                               FontSize="15"
                                FontAttributes="Bold"
                                TextColor="Black"
                                HorizontalOptions="Center" />
@@ -83,7 +87,7 @@
                 </Frame>
 
                 <Label Text="Study Tasks"
-                       FontSize="20"
+                       FontSize="18"
                        FontAttributes="Bold"
                        TextColor="Black" />
             </VerticalStackLayout>
@@ -98,7 +102,7 @@
                     <Frame BorderColor="#E0E0E0"
                            CornerRadius="14"
                            Padding="12"
-                           Margin="0,6"
+                           Margin="0,5"
                            BackgroundColor="White">
                         <Frame.GestureRecognizers>
                             <TapGestureRecognizer Tapped="OnTaskTapped" />
@@ -113,7 +117,7 @@
                                        IsVisible="{Binding IsCompleted}" />
 
                                 <Label Text="{Binding Subject}"
-                                       FontSize="18"
+                                       FontSize="17"
                                        FontAttributes="Bold">
                                     <Label.Triggers>
                                         <DataTrigger TargetType="Label"
@@ -145,8 +149,9 @@
                 Clicked="OnAddTaskClicked"
                 BackgroundColor="#1E88E5"
                 TextColor="White"
-                CornerRadius="22"
-                HeightRequest="52"
-                FontAttributes="Bold" />
+                CornerRadius="20"
+                HeightRequest="48"
+                FontAttributes="Bold"
+                FontSize="15" />
     </Grid>
 </ContentPage>
